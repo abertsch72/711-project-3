@@ -1,0 +1,443 @@
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+100%|███████████████████████████████████| 23925/23925 [7:26:01<00:00,  1.21it/s]{'train_runtime': 26761.0229, 'train_samples_per_second': 114.371, 'train_steps_per_second': 0.894, 'train_loss': 2.9478395171449474, 'epoch': 15.0}
+100%|███████████████████████████████████| 23925/23925 [7:26:01<00:00,  1.12s/it]
+***** Running Evaluation *****
+  Num examples = 11332
+  Batch size = 128
+/jet/home/abertsch/.local/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+100%|███████████████████████████████████████████| 89/89 [05:12<00:00,  3.51s/it]
+
+wandb: Waiting for W&B process to finish, PID 96857... (success).
+wandb:                                                                                
+wandb: Run history:
+wandb:                     eval/gen_len ▁
+wandb:                        eval/loss ▁
+wandb:                      eval/rouge1 ▁
+wandb:                      eval/rouge2 ▁
+wandb:                      eval/rougeL ▁
+wandb:                   eval/rougeLsum ▁
+wandb:                     eval/runtime ▁
+wandb:          eval/samples_per_second ▁
+wandb:            eval/steps_per_second ▁
+wandb:                      train/epoch ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:                train/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:              train/learning_rate ▄███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▄▃▃▃▃▃▃▂▂▂▂▂▁▁▁
+wandb:                       train/loss █▆▆▅▅▄▄▄▃▄▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                 train/total_flos ▁
+wandb:                 train/train_loss ▁
+wandb:              train/train_runtime ▁
+wandb:   train/train_samples_per_second ▁
+wandb:     train/train_steps_per_second ▁
+wandb: 
+wandb: Run summary:
+wandb:                     eval/gen_len 19.7367
+wandb:                        eval/loss 3.06352
+wandb:                      eval/rouge1 38.9454
+wandb:                      eval/rouge2 17.9678
+wandb:                      eval/rougeL 32.5351
+wandb:                   eval/rougeLsum 32.5271
+wandb:                     eval/runtime 316.5177
+wandb:          eval/samples_per_second 35.802
+wandb:            eval/steps_per_second 0.281
+wandb:                      train/epoch 15.0
+wandb:                train/global_step 23925
+wandb:              train/learning_rate 0.0
+wandb:                       train/loss 2.7081
+wandb:                 train/total_flos 1.035160660445184e+18
+wandb:                 train/train_loss 2.94784
+wandb:              train/train_runtime 26761.0229
+wandb:   train/train_samples_per_second 114.371
+wandb:     train/train_steps_per_second 0.894
+wandb: 
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced apricot-energy-6: https://wandb.ai/abertsch/bart_xsum/runs/11max9ht
+wandb: Find logs at: ./wandb/run-20211110_191630-11max9ht/logs/debug.log
+wandb: 
+loading configuration file https://huggingface.co/facebook/bart-base/resolve/main/config.json from cache at /jet/home/abertsch/.cache/huggingface/transformers/f5310d276a6d1648d00c32fadc8bf7b4607e0fbd5b404fc4a0045960aa2bdfdb.da0f3c0e2dc1c2fecc46738a1ebf4806f2fc36aae3d5c1947f21e063e7cab34b
+Model config BartConfig {
+  "_name_or_path": "bart-base",
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.1,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "forced_eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "torch_dtype": "float32",
+  "transformers_version": "4.12.3",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading weights file https://huggingface.co/facebook/bart-base/resolve/main/pytorch_model.bin from cache at /jet/home/abertsch/.cache/huggingface/transformers/486355ec722ef05fd480e999d4c763be56549ae930f6a3742ee721a5d2a05647.f2f355ad2775769afc60592b43a46d72ca548375e3a1d65f381a751e711cbadd
+All model checkpoint weights were used when initializing BartForConditionalGeneration.
+
+All the weights of BartForConditionalGeneration were initialized from the model checkpoint at facebook/bart-base.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use BartForConditionalGeneration for predictions without further training.
+  Id  Summary after                                                                                        Summary before
+----  ---------------------------------------------------------------------------------------------------  ----------------------------------------------------------------------------------------------------------
+   0  Apple has denied it misled customers in Australia by falsely claiming the new iPad could connect to  The country's consumer watchdog has taken Apple to court for false advertising because the tablet computer
+   1  England one-day captain Eoin Morgan and batsman Alex Hales have withdrawn from                       No international side has toured Bangladesh since 20 people were killed in a siege at a cafe
+   2  Canadian Prime Minister Justin Trudeau has worn a pair of red socks as he met Taoise                 In a nod to Mr Trudeau's fondness for statement socks, he wore Canada-
+   3  A hydro-electric power system which uses a vertical axis turbine to generate electricity has been    The Subsea Power Hub (SPH) is being tested by Aberdeen based EC-
+   4  The chief executive of insolvency serviceAccountant in Bankruptcy has said the                       The last quarter saw insolvencies rise year-on-year by 17.3
+   5  China has said it will cut its carbon emissions by 60-65% by 2030,                                   The office of Premier Li Keqiang said that emissions "will peak by around 2030
+   6  CCTV footage has been released of a lorry driver forcing a van to stop on                            16 January 2016 Last updated at 12:15 GMTThe CCTV, recorded on 5 January
+   7  The pasty tax has been one of the most divisive issues in British politics since the                 The pasty tax became synonymous with George Osborne's so-called Omnishambles
+   8  Hundreds of Derry City football fans have taken part in a demonstration in support of the            Dublin side Bohemians visit Brandywell Stadium on Friday night in the first home
+   9  Plans to spend £4bn on EU-funded projects after Brexit are "not                                      The Welsh secretary said Labour had let down west Wales and the valleys.Speaking at the
+  10  It's almost time for the final Commons session before the new Parliament gets under way on           Watch out for plenty of brinkmanship, particularly on a key amendment to the Criminal Fin
+  11  Castleford Tigers winger Denny Solomona has held talks with Sale Sharks about                        Solomona scored 40 tries in the 2016 season, including a record total of 40
+  12  Drivers who are taking drugs at high levels are to be banned from driving under new                  As well as outlawing driving while under the influence of illegal drugs, new legislation will
+  13  Gordon Guthrie, the former Derby County manager and first-team coach, has died                       He was a reserve player at Derby before his career was ended by injury.Guth
+  14  Tributes have been paid to "unbelievable" young footballer Stephen Hendrie                           The 19-year-old, from Staffordshire, died on Wednesday after a four
+  15  A Kent cricket club has become the first in the country to score a zero in a                         No batsman from Bapchild Cricket Club was able to get off the mark against
+
+Target summaries:
+
+  Id  Target summary
+----  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   0  US technology firm Apple has offered to refund Australian customers who felt misled about the 4G capabilities of the new iPad.
+   1  England one-day captain Eoin Morgan and opening batsman Alex Hales have opted out of October's tour of Bangladesh because of security concerns.
+   2  Irish Taoiseach (PM) Leo Varadkar has engaged in some "sock diplomacy" in his first meeting with Canadian Prime Minister Justin Trudeau in Dublin.
+   3  A new ocean current energy system has been successfully deployed, according to the company behind it.
+   4  Scotland's business minister has blamed "continuing austerity" for a sharp rise in personal insolvencies.
+   5  China - the world's largest emitter of greenhouse gases - has announced details of its climate action plan.
+   6  Footage of a lorry overtaking a van on a level crossing in Lincolnshire has been released by British Transport Police.
+   7  Chancellor Philip Hammond may have set a record by scrapping a planned rise in National Insurance for the self-employed less than a week after announcing it - here are some other contenders for quickest political U-turn of recent times.
+   8  Derry City Football Club has held what it describes as "a public act of defiance" to show disapproval at attacks on visiting fans this season.
+   9  Alun Cairns has launched a fierce attack on the "mismanagement" of £4bn of EU grants by the Welsh Government intended to help the poorest areas.
+  10  It's the last rites of the 2015 Parliament - and in a frenzy of last minute deal-making, the legislation which can be completed will be rushed to the finishing line, while all manner of bills and other parliamentary business is dropped for lack of time.
+  11  Castleford Tigers are to take legal action against winger Denny Solomona after he failed to return to the club for pre-season training.
+  12  People who have been prescribed powerful anxiety or pain relief drugs are being warned about a new drug-driving law.
+  13  Derby County's longest-serving staff member Gordon Guthrie MBE, who spent more than 60 years with the club, has died at the age of 86.
+  14  An appeal started by the cancer fundraiser Stephen Sutton has raised a further £400,000 - only a day after the teenager died.
+  15  A cricket team was bowled out for 0 in just 20 balls in a county six-a-side indoor championships match.
+
+Source documents:
+
+  Id  Document
+----  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   0  The country's consumer watchdog has taken Apple to court for false advertising because the tablet computer does not work on Australia's 4G network.
+      Apple's lawyers said they were willing to publish a clarification.
+      However the company does not accept that it misled customers.
+      The Australian Competition and Consumer Commission (ACCC) said on Tuesday: "Apple's recent promotion of the new 'iPad with wi-fi + 4G' is misleading because it represents to Australian consumers that the product can, with a sim card, connect to a 4G mobile data network in Australia, when this is not the case."
+      The watchdog then lodged a complaint at the Federal Court in Melbourne.
+      At a preliminary hearing, Apple lawyer Paul Anastassiou said Apple had never claimed the device would work fully on the current 4G network operated by Telstra.
+      Apple says the new iPad works on what is globally accepted to be a 4G network.
+      The matter will go to a full trial on 2 May.
+      The Apple iPad's third version went on sale earlier this month, with Australia the first country where it was available.
+      Shoppers lined up by the hundreds at Apple stores on opening day and the company said it had been its strongest iPad launch to date.
+      The ACCC said it was seeking an injunction on sales as well as a financial penalty against Apple, corrective advertising and refunds to consumers.
+      On its website, Apple does state that 4G LTE is only supported on selected networks in the US and Canada.
+   1  No international side has toured Bangladesh since 20 people were killed in a siege at a cafe in Dhaka in July.
+      The England and Wales Cricket Board said in August that tour would go ahead following a security review.
+      Jos Buttler will captain the one-day side, with the squads for the one-day and Test series to be named on Friday.
+      The tour features three one-day internationals followed by two Test matches.
+      Morgan has followed his own course, with the assurance ringing in his ears that nothing is going to happen, and I don't see how they can now sack him
+      England director of cricket Andrew Strauss said: "While we understand and respect Eoin and Alex's decision, we are disappointed that they have made themselves unavailable for selection for the Bangladesh tour."
+      He added that no further withdrawals are expected following "open and honest" discussions with all the players.
+      England players Stuart Broad, Moeen Ali, Chris Jordan and Liam Dawson have all publicly said they will tour Bangladesh.
+      Former England captain Michael Vaughan has described Morgan's decision as a "huge mistake", while Nasser Hussain, another ex-skipper of the national side, said Morgan "should be with his team".
+      But team-mate Ben Stokes tweeted his support for both players.
+      England fly out on 29 September, with the one-day series starting on 7 October and the Test series on 20 October.
+      They follow that with a tour of India, which begins on 9 November and features five Tests, three ODIs and three Twenty20s.
+      Morgan, 29, said this week that he would never go on a tour where security concerns may affect his game.
+      "In 2010, we played an Indian Premier League game in Bangalore and a bomb went off in the ground," he said. "We left and went straight to the airport.
+      "Another one was playing domestic cricket in Bangladesh during political elections and things were incredibly violent. Given that no-one has toured there since the terrorist attack adds a bigger decision to it."
+      Bowlers Andrew Caddick and Robert Croft pulled out of England's 2001 tour of India because of safety concerns following the 9/11 attacks in New York.
+      "I was adamant I didn't want to go and stuck to what I thought was right," Caddick told BBC Radio 5 live's Sportsweek programme before Morgan and Hales made their announcement on Sunday.
+      "It's slightly different now. The security they implement in world cricket is quite high, whereas back in 2001 it wasn't.
+      "Eoin Morgan has experienced risks to security in the past. Nobody else in the England team has. It's a personal decision and it should stay that way."
+      Former spinner Graeme Swann, who was part of the England squad that returned to India after the Mumbai bombings in 2008, said he would not travel to Bangladesh if he was still playing.
+      "We are a target," he said. "If I was in that situation, I wouldn't go."
+      Ex-England skipper Vaughan told BBC Radio 5 live that Morgan should go on the tour.
+      "I don't think the captain had any other option but to get on the plane and lead a young side. I do think it is a huge mistake that he has made," he said.
+      "This young side will all be nervous because of everything around the side. There will be guards everywhere, they'll have guns in their faces with security outside their rooms. The young England side won't like what they see.
+      "He'll continue in the side as captain for India - my question would be: 'Are you safe going there?' There is a similar Foreign Office warning.
+      "There will be a bit of banter created and he'll have to take some stick when he's back in the side, that's the nature of being in a sports team. It's one that I think he will live to regret."
+      It says there is "a heightened threat of further terrorist attacks" in Bangladesh, although the threat level applies to many European cities, including London.
+      It adds "foreigners, in particular westerners, may be directly targeted" and that "places where westerners are known to gather may be at higher risk of attack".
+      It advises travellers to Bangladesh to "minimise exposure to these areas" and "remain vigilant, monitor local and social media and follow any specific advice of the local security authorities".
+      Australia postponed their Test tour of Bangladesh in October 2015 after the Australian government warned of an increasing security risk to the team.
+      BBC Sport cricket correspondent Jonathan Agnew:
+      "Morgan has never expressed any positive views on making this tour, so his decision to pull out is not a surprise.
+      "In his explanation, he refers to a bomb blast in Bangalore in 2010, an incident that profoundly unsettled him, as did civil unrest in Bangladesh. It won't be lost on Strauss, though, that Morgan has returned to play in both countries since.
+      "However, having guaranteed that players' futures will not be affected by this decision, it's difficult to see Morgan losing the captaincy, as has been suggested in some quarters.
+      "Hales has effectively given another opening batsman the chance to take his place in Test cricket, although his future in that form was doubtful anyway. After a record-breaking summer, he's sure to return to the one-day team in India."
+      Sabir Mustafa, Editor, BBC Bengali Service:
+      "The Gulshan cafe attack raised a lot of questions about the police's ability to disrupt the terror network or bring the perpetrators to justice.  A sense of fear had gripped both the expatriate communities as well as the locals who feared an escalation in the frequency and ferocity of attacks.
+      "But things have moved in the opposite direction lately. Since August, police have located and raided three hideouts of militants in and around Dhaka, killing 13 suspects.
+      "A sense of confidence is beginning to be generated among the population, that the police may be finally getting to grips with the situation.
+      "Despite these police successes, caution remains the mantra among expatriates."
+   2  In a nod to Mr Trudeau's fondness for statement socks, he wore Canada-themed mountie and maple leaf print ones to welcome his first foreign visitor.
+      Mr Trudeau opted for a more subtle striped pair on his first official engagement in the Republic of Ireland.
+      The Canadian premier is in the country for a three-day visit.
+      Away from talk of socks, trade issues are set to dominate the agenda, with the Canada-EU free trade deal expected to be a focal point of talks between the two leaders.
+      Mr Trudeau arrived in Dublin with his wife, Sophie GrÃ©goire, and their youngest son, Hadrien, on Monday.
+      He is in Europe for a key G20 summit in Hamburg, Germany later this week.
+      Mr Trudeau is also due to meet Irish President Michael D Higgins at his official residence.
+      The visit was arranged in May when Mr Varadkar's predecessor Enda Kenny met the Canadian leader in Montreal.
+      On that occasion, Mr Trudeau wore special Star Wars themed socks, as it coincided with the widely-celebrated Star Wars Day on 4 May.
+   3  The Subsea Power Hub (SPH) is being tested by Aberdeen based EC-OG at Shapinsay Sound, Orkney.
+      The company said the system is "performing in line with technical predictions".
+      The unit will be left to operate autonomously over the summer months while it is checked using wireless data monitoring.
+      EC-OG said the SPH is a ground-breaking hybrid drive system which uses a marine energy convertor to produce energy which is stored in a lithium-based unit.
+      Engineering director Robert Cowman said: "Although the weather was not on our side, we were still able to successfully complete the installation and commence testing ahead of schedule.
+      "The system is performing very well and I'm pleased at how quickly the results are correlating with the theoretical basis for the test. Having a vertical axis turbine, means that the SPH is operating effectively in these unpredictable, sporadic flow conditions.
+      "Thanks go to the EC-OG team as well as those who have helped us at EMEC, Leask Marine, Castle View and Scottish Enterprise."
+   4  The last quarter saw insolvencies rise year-on-year by 17.3% to 2,839, according to official figures.
+      Paul Wheelhouse claimed there was "no question" austerity had led to "more people suffering the anxiety and distress of insolvency".
+      The Scottish Conservatives called on the Scottish government to do more to help people deal with personal debt.
+      Accountant in Bankruptcy (AiB), which administers the process of bankruptcy and records corporate insolvencies, said personal bankruptcies increased by 11.2% year-on-year to 1,289 in the three months to 30 June.
+      Protected trust deeds rose 22.9% over the same period to 1,550.
+      The number of debt payment programmes under the Debt Arrangement Scheme (DAS) - which allows debtors to pay their debts in full without facing insolvency - were also up by 16.8%, to 597.
+      A total of Â£9.4m was repaid through DAS in the latest quarter, up from Â£9.3m repaid in the same period last year.
+      Responding to the figures, Mr Wheelhouse said: "On the personal insolvency front, there is no question that continuing austerity has led to incomes being squeezed and more people suffering the anxiety and distress of insolvency as a result.
+      "But it is nevertheless important we acknowledge that the longer term trend of people accessing statutory debt relief and debt management solutions is a declining oneâ€Ž and numbers of people falling into insolvency are around half of the levels reported at the turn of the decade."
+      The Scottish Conservatives said the personal insolvency figures showed "just how much some are struggling".
+      Finance spokesman Murdo Fraser said: "It's incredibly worrying to see such a sharp increase in the number of Scots going bankrupt.
+      "Given the lacklustre growth in the Scottish economy over the last year, we are starting to see the consequences of it as more and more people are struggling in a sea of debt.
+      "These individuals will be going through an incredibly tough time and it is incumbent upon the Scottish government to do all they can to support them.
+      "One step the SNP could take immediately would be to boost long-term economic growth and job creation by reversing their tax hikes that have made Scotland the highest taxed part of the UK."
+      The latest AiB figures also showed a sharp drop in the number of Scottish businesses becoming insolvent or entering receivership.
+      In the last quarter, there were 200 corporate insolvencies - a drop of 24.5%.
+      The figure included 118 compulsory liquidations and 82 creditor voluntary liquidations.
+   5  The office of Premier Li Keqiang said that emissions "will peak by around 2030" and China would work hard to achieve the target even earlier.
+      The statement echoes China's declaration last November following a US-China summit.
+      China's pledge comes ahead of talks late this year in Paris to seek a new global deal on climate change.
+      The statement, released following a meeting in Paris between Li and French President Francois Hollande, said China aimed to reduce its carbon dioxide emissions per unit of GDP by 60-65% by 2030, from 2005 levels.
+      The carbon intensity target builds on a previous plan to cut carbon intensity by 40-45% by 2020.
+      China also aimed to increase the share of non-fossil fuels in its primary energy consumption to about 20% by 2030, the statement added.
+      Beijing previously set a goal of getting around 15% of its energy from clean sources by 2020.
+      Analysis by the BBC's science editor, David Shukman
+      This is a significant moment in international climate negotiations. For years China argued that it was too poor and underdeveloped to even consider accepting any obligations to curb its greenhouse gases.
+      Now we're witnessing the world's largest emitter playing by the UN's rules and promising even deeper cuts that those suggested some months back. For diplomats and ministers hoping to see a meaningful deal at the climate summit in Paris at the end of the year, this will be a welcome step.
+      The size of cuts, and the timescale, will of course be judged by many as too little and too late. But for anyone who endured the collapse of talks at the Copenhagen summit six years ago, China is playing a very different and far more constructive game. Will it actually make any difference to global warming?
+      Scientists always say it does not matter to the atmosphere where the emissions come from and China's will continue to rise for the next 15 years or so, and on their already gargantuan scale.
+      And today's announcement does not mean that Chinese use of fossil fuels is coming to an end any time soon. On the same day that China has announced this climate plan it also began construction of a massive pipeline that will bring it a lot of gas from Russia.
+      All countries involved in UN climate talks must submit national plans for cutting emissions ahead of the key Paris talks.
+      China joins several other countries, including the EU, US and Mexico, that have already committed their plans for tackling climate change, formally known by the UN as INDCs (intended nationally determined contribution).
+      With China's announcement, the world's biggest polluters - China, the US and the EU - have now all detailed their climate plans ahead of the global climate conference.
+      Commenting on the statement, Li Shuo, climate analyst for Greenpeace China, said for success in Paris, all players  - including China and the EU - needed to up their game.
+      "Today's pledge must be seen as only the starting point for much more ambitious actions.
+      "It does not fully reflect the significant energy transition that is already taking place in China.
+      "Given the dramatic fall in coal consumption, robust renewable energy uptake, and the urgent need to address air pollution, we believe the country can go well beyond what it has proposed today."
+      China's new climate plan sends a strong message to other countries to do more on climate ahead of this year's negotiations for a new global climate deal, said WWF.
+      Samantha Smith, global climate leader at WWF, said China was the first major developing country emitter to set a total emissions peak target.
+      "In doing so, China has committed to both global climate security and to a transformational energy transition at home," she said.
+      "We emphasise the importance of the fact that China has made commitments beyond its responsibility as a developing country. But we hope that China will continue to find ways to reduce its emissions, which will in turn drive global markets for renewable energy and energy efficiency."
+      On Monday, at talks in Brussels with EU leaders, the Chinese Premier said the country was seeking a fair, global system to tackle climate change.
+      China will work with the international community to seek a "fair, reasonable, win-win" global climate governance system, Li said.
+   6  16 January 2016 Last updated at 12:15 GMT
+      The CCTV, recorded on 5 January, shows the HGV passing the van at speed near Ulceby, forcing the van driver to stop on the crossing.
+      Inspector Graham Bridges said it was an example of "extremely dangerous driving" and the police are now trying to trace both drivers.
+   7  The pasty tax became synonymous with George Osborne's so-called Omnishambles Budget of 2012. The chancellor was forced to backtrack on several proposed tax rises - including charging 20% VAT on alterations to historic buildings and static caravans - in the weeks after his statement.
+      But it was the plan to charge 20% VAT on hot savoury food which caused Mr Osborne the most indigestion.
+      He had proposed that all food sold "above ambient temperature" - including pasties, pies and sausage rolls - should include VAT to close a tax loophole.
+      It might have looked innocuous on paper but the idea caused an outcry among businesses up and down the country, who argued it would hit trade and jobs.
+      The chancellor and Prime Minister David Cameron also faced claims they were out of touch with the pasty-munching masses.
+      The measure was finally dropped in late May, about two months after it was first announced.
+      Towards the end of his time as chancellor, George Osborne performed another screeching U-turn, this time over cuts to tax credits for low-income families in work.
+      It was part of a £12bn cut to the welfare bill which the Conservatives had promised before the 2015 election but had given very little detail of before the poll.
+      In an "emergency" June Budget after David Cameron's election victory, the chancellor announced that spending on tax credits had ballooned since 1997 and he planned to reduce the income threshold from £6,420 to £3,850 and restrict tax credits and Universal Credit to the first two children.
+      Labour, who were in the throes of a leadership contest at the time, were somewhat slow to respond but soon the opposition galvanised themselves against the proposal, which was also criticised by Tory backbenchers and charities, who said it would cost many families £1,000 a week.
+      The government suffered a damaging defeat in the House of the Lords, where peers backed Labour calls to delay the plans. Mr Osborne finally conceded defeat in November's Autumn Statement when he said the plans would simply not be implemented.
+      Gordon Brown loved to wrongfoot the opposition by springing a surprise at the end of his Budget speeches - but it was his own side that was in uproar when he cut 2p from the basic rate of income tax in his 10th and final Budget in March 2007.
+      He announced that the 10p starter rate would be scrapped at the same time - and initially refused to accept that there would be any losers from this measure.
+      The then chancellor argued those earning less than £17,000 would not be disadvantaged because of a commensurate increase in working tax credits but Labour MPs were not impressed, accusing the chancellor of clobbering the poor to fund a middle-income tax cut.
+      The change was not due to come into force until May 2008 and Mr Brown had plenty of time to find a way out. He was eventually forced to agree a £2.7bn compensation package for those set to lose out, by raising income tax allowances.
+      By that point, of course, Mr Brown had succeeded Tony Blair as prime minister and the simmering row was not helped by those Labour MPs already unhappy with his leadership.
+      Although this was strictly a partial U-turn - the 10p rate was never restored - the episode dragged on for much of his premiership. Chancellor Alistair Darling was forced to make further concessions in 2009 when Labour MP Frank Field led a revolt against the fairness of the remedial measures.
+      £2.7bn package to help 10p tax victims
+      This might well be the mother of all tax U-turns, as it led to the downfall of a prime minister.
+      Conservatives had long seen domestic rates, based on the rental value of properties, as unfair and out of date.
+      The system Margaret Thatcher devised after the 1987 election to replace them - a single flat-rate per-capita tax on every adult, set by local authorities - was dubbed the Community Charge by her government. But everybody else called it the Poll Tax.
+      It was first introduced in Scotland at the end of 1989 and rolled out in England and Wales in early 1990. It proved hugely unpopular and sparked large protests, culminating in riots in London and other cities in the Spring of 1990.
+      The social unrest, although condemned by politicians at the time, fuelled the impression of a government that was deeply out of touch after 11 years and before the year was out Mrs Thatcher had been ousted.
+      After taking over as Tory leader and prime minister, John Major ditched the poll tax and reverted to a system based on property values in the form of the council tax in 1992. Unlike its predecessor, the council tax took ability to pay into account.
+   8  Dublin side Bohemians visit Brandywell Stadium on Friday night in the first home game since Dundalk supporters were attacked earlier this month.
+      Fans, residents and club officials marched from Lecky Road to Brandywell.
+      Club director Denis Bradley said it was a symbolic gesture to prevent further trouble and 500 people took part.
+      "This is a battle we will win, this is a battle we have to win, maybe not immediately but we are very resolved," he said.
+      Derry City's FAI Cup semi-final defeat by Dundalk FC was marred by trouble outside the ground.
+      A teenager suffered head injuries and a Dundalk supporters' bus was vandalised.
+      Police said they have been liaising closely with the local community and the club in preparation for Friday night's match.
+      Ch Insp Alan Hutton said: "There will be an appropriate policing operation to ensure the safety of all supporters attending, as well as minimising any impact on local communities.
+      "I would encourage all supporters to come and enjoy the game and respect the local community.
+      "I would also like to acknowledge the excellent work carried out by the local community and Derry City football club in preparation for tonight's match."
+      Derry City added that the trouble by a "group of youths" was not typical.
+      "There is a group of youngsters, we don't know where they are from or who they are, who appear to be using these occasions to misbehave," Mr Bradley said.
+      "Derry City are saying tonight: "Not in our name" and the local residents are joining us to say: "Not in our area" are you doing these things."
+   9  The Welsh secretary said Labour had let down west Wales and the valleys.
+      Speaking at the Conservative Party conference in Birmingham, Mr Cairns said some areas, which had the most EU funds, voted more heavily to leave.
+      A spokesman for First Minister Carwyn Jones insisted EU-funded programmes had made a "big difference" in Wales.
+      Mr Cairns accused Mr Jones of trying to present Wales as "a victim of the EU referendum", following the majority vote across the UK for Brexit.
+      "He seems to forget that Wales voted to leave the European Union too," he said.
+      Mr Cairns argued Brexit represented an opportunity to do things better - and warned "carrying on in the same old way, spending according to the same old plans after two decades is not an option any longer".
+      "After all, European structural funds are supposed to be a temporary fix, a stimulus for the most deprived parts of the UK.
+      "In Wales in 1999 I remember the debate about Objective One money - it was described as a 'once-in-a-generation opportunity'.
+      "But 16 years on, £4bn later, Labour's mismanagement of the funds has let those communities down.
+      "So much was their frustration that those areas that had received most European aid were the very same areas that voted in the strongest numbers to leave the European Union.
+      "If only they [Labour] had focused on the outcomes in the same way that they focused on the money that they were spending in those projects."
+      Mr Cairns told the conference the new structure after Brexit "will give us the opportunity to follow UK priorities, investing in a way that is completely tailored to the Welsh and the UK economy".
+      The Vale of Glamorgan MP singled out Mr Jones for criticism, but added: "Whether we like it or not, we must work from that instruction.
+      "There are new and exciting opportunities for Wales with the UK being the global leader in free trade."
+      Mr Cairns argued the new Department for International Trade will be "fundamental" to seek out new markets and increase inward investment for Wales.
+      A spokesman for the first minister said there was an "astonishing paradox" in Mr Cairns's remarks.
+      "First he celebrates the good employment figures in Wales, and then he trashes European funding," he said.
+      "The truth is that European funded programmes, like Jobs Growth Wales, have made a big difference to Welsh businesses and job-seekers.
+      "The reason Wales is out-stripping other parts of the UK doesn't have anything to do with the Tories in Westminster."
+  10  Watch out for plenty of brinkmanship, particularly on a key amendment to the Criminal Finances Bill (see below). This will also make the whole timetable pretty fluid and prone to last minute alteration as new events are crowbarred in.
+      A few of the MPs who are departing at this election may deliver their Commons swansongs - and the final PMQs could be a particularly bare-knuckle occasion.
+      Meanwhile, up on the committee corridor, it's raining reports, as the various select committees rush out the results of their inquiries - up to 50 more reports should be out before dissolution.
+      The subjects include: the Women and Equalities Committee on Building for Equality: Disability and the Built Environment; the Education Committee on Exiting the EU: challenges and opportunities for higher education; Scottish Affairs on Jobcentre Plus closures, and Public Accounts (which has quite a few offerings in the pipeline) on the HMRC Estate.
+      The Commons meets at 2.30 pm for Communities and Local Government questions - with any urgent questions or ministerial statements likely to be slotted in at 3.30pm.
+      The main event will be the rushing through of the Northern Ireland (Ministerial Appointments and Regional Rates) Bill, which is designed to keep the devolved system in place while the political parties on the Assembly negotiate to set up a new executive.
+      The adjournment led by the Conservative Richard Drax in on primates as pets - it will raise the issues highlighted in a petition of more than 110,000 signatures calling for new welfare standards for primates. This had been gathered by visitors to Monkey World, a primate rescue centre in Mr Drax's constituency, which calls for a change the law so that those who want to keep primates have to meet exacting standards of welfare that equal those found in zoos and wildlife parks.
+      In Westminster Hall (4.30pm) MPs debate e-petition 172405  on closed book examinations for GCSE English Literature. The exams require students to learn and memorise as many as 250 quotations from 15 poems, two plays and a novella. The petition argues that the exams should not test the student's memory, but how they interpret texts. The petition has attracted 109,285 signatures.
+      The scheduled hearing of the Commons Liaison Committee, the super committee of select committee chairs with the prime minister, has been cancelled because of the election. They now aim to hold a hearing as soon as possible in the new parliament, but since the new set of chairs are unlikely to be in place before mid-July, that may not be before the summer recess.
+      In the Lords, business opens (2.30pm) with tributes to Sir David Beamish who has stood down as the top official of the House, the Clerk of the Parliaments (the Clerk of the Commons is "under-clerk") to be led by the Leader of the House, Baroness Evans.
+      And then peers move on to a series of orders and regulations, including the Trade Union (Deduction of Union Subscriptions from Wages in the Public Sector) Regulations 2017, the Immigration Act 2016 (Consequential Amendments) (Biometrics and Legal Aid) Regulations 2017, the Misuse of Drugs Act 1971 (Amendment) Order 2017 among others.
+      Then there is a short debate on the report 'Race in the workplace: The McGregor-Smith Review' - which calls for all employers with more than 50 people to set aspirational targets to increase diversity and inclusion throughout their organisations - not just at the bottom. Companies should look at the make-up of the area in which they are recruiting to establish the right target. For instance, the proportion of working age people from a BME background in London and Birmingham is already over 40%, with Manchester not far behind. Baroness McGregor-Smith chairs the Women's Business Council, a working group that seeks to maximise women's contribution to economic growth, and was appointed by the then Business Secretary Sajid Javid, to lead a review of the issues faced by businesses in developing black and minority ethnic talent from when they start work through to the executive level.
+      The Commons meets at 11.30am for Justice questions (watch out for fallout from the demise of the Prisons and Courts Bill, which has had to be scrapped because there is not enough time to get it through before the election) to be followed by a Ten Minute Rule Bill from Labour's Rachel Reeves.
+      This is on fees and charges to unauthorised overdrafts, which are often higher than those for the now capped payday loans - an issue she has pursued on the Treasury Select Committee. She wants the Financial Conduct Authority to introduce a cap on the charges to bring them into line with the cap on payday loans.
+      The day's main event is the committee of the whole House debate on the Finance (No. 2) Bill - which puts the measures announced in the Budget into effect - although the time pressure imposed by the election will probably mean controversial sections are stripped out. MPs will also debate Lords amendments to the Health Service Medical Supplies (Costs) Bill.
+      In Westminster Hall, there's a Backbench Business Committee debate on Post Office closures (9.30am- 11am), followed by a series of debates led by individual MPs: the Conservative former education secretary Nicky Morgan raises Police and local authority guidance on dogs attacking other dogs (11am- 1.30 am);  the Conservative Derek Thomas has a debate on employment opportunities in food and farming (2.30pm- 4pm); the Conservative James Heappey discusses Wells' bid for UK City of Culture (4pm-4.30pm) and the Conservative David Mackintosh leads a debate on grandparents' rights to access to grandchildren (4.30pm -5.30pm).
+      In the Lords (2.30pm) peers bash their way through Commons amendments to the Technical and Further Education Bill, the Neighbourhood Planning Bill (there is now all-party consensus around an amendment to provide protection for pubs in the planning system), and the Bus Services Bill.
+      Then comes the main event: the report stage and third reading of the Criminal Finances Bill - watch out for the cross party amendment in the names of the Crossbencher Baroness Stern, Labour's Lord Rosser, the Lib Dem Baroness Kramer and the Conservative Lord Kirkhope, to require a register of the beneficial ownership of companies based in UK overseas territories like Anguilla, Bermuda, the British Virgin Islands, the Cayman Islands, Montserrat and the Turks and Caicos Islands - which they argue will improve transparency and help clamp down on money laundering.
+      Finally, there is  a short debate on support for the steel industry and its role in the government's industrial strategy led by Lord Mendelsohn.
+      The Commons opens (11.30am) with Welsh questions, followed at noon by  Prime Minister's questions - which, unless face to face TV debates are held, will be the only direct confrontation between Theresa May and her rivals before polling day.
+      Then comes a Ten Minute Rule Bill from the SNP's Alan Brown, who wants to end the use of cash retentions in the construction industry. This is where a proportion of a sub contract is held over by the main contractor to sort any defects on the job - but sub-contractors routinely fail to get their money back in a timely manner or sometimes not at all, sometimes because of the insolvency of main contractor. Mr Brown is proposing a scheme similar to the tenancy deposit scheme which will provide independent protection.
+      After that it's back to the washup, and consideration of Lords amendments to the Digital Economy Bill (issues in play include more superfast broadband, a proposed independent commission to set the BBC Licence Fee, a requirement that public service broadcasters are prominent on the channel displays of digital TV systems, and much much more), followed by Lords amendments to the Criminal Finances Bill (see above).
+      The adjournment led by Labour's Chris Evans is on the effect of diesel fumes in Islwyn - his constituency.
+      In Westminster Hall  there are debates on school funding in the North East of England, led by Labour's Sharon Hodgson (9.30am -11am);  the Colne to Skipton railway led by the Conservative Andrew Stephenson (11am - 11.30am) and learning outside the classroom, led by Labour's Barry Sheerman (4pm- 4.30pm).
+      In the Lords (3pm) questions include the Green peer Baroness Jones of Moulsecoomb on refining the definition of domestic extremism to enable the police to focus on those involved in terrorism and serious crime - she used the Data Protection Act to access her police file, and found she was considered a potential extremist, and had been under surveillance by the police's "domestic extremism" unit from 2001 until 2012, including during her candidacy to become London's mayor.
+      She is still pressing for answers about the surveillance and the alleged destruction of documents on her case.
+      Then peers zoom through the remaining private members' bills sent over by the Commons - starting with the committee stage of the Local Audit (Public Access to Documents) Bill, followed by the Merchant Shipping (Homosexual Conduct) Bill and the Guardianship (Missing Persons) Bill - and the Farriers (Registration) Bill. All will have their third reading debates the next day.
+      In the Commons, MPs open (9.30am) with Exiting the European Union questions, followed by any remaining loose legislative ends sent over by their lordships. There may or may not be any.
+      And the final debate of the 2015 Parliament will be the SNP MP Chris Stephens' adjournment on the cost of telephone calls to the Department for Work and Pensions.
+      In the Lords (from 11am) questions to ministers include the Conservative, Baroness Couttie, the Leader of Westminster City Council, calling for legislation to regulate pedicab drivers. Then peers will move on to those third reading debates - on the Local Audit (Public Access to Documents) Bill, the Merchant Shipping (Homosexual Conduct) Bill, the Guardianship (Missing Persons) Bill and the Farriers (Registration) Bill.
+      And their final task will be to approve some statutory instruments on Driving Disqualifications and Student Fees, Awards and Support- although that last one comes with a regret motion attached, from Labour's Lord Clark of Windermere. So it is possible that the final act of the House of Lords in this Parliament might be to defeat the government.
+      And when all is done, the mildly pythonesque ceremony of prorogation will follow, with much doffing of cocked hats and flowery cod-medieval language.
+      Some MPs, mostly those who're not seeking re-election, usually come to the bar of the House to watch the spectacle.
+      And that will be it until Parliament reconvenes after the election, On 3 May (following dissolution at 00:01 BST that morning) a meeting of the Privy Council will issue a proclamation to declare the meeting of the new Parliament with 14 June the likely date.
+      The only business at the meeting will be to elect a Speaker. The next day the anointed Speaker will receive the Royal Approbation, and this will allow MPs and peers start to swear the Oath of Allegiance. This continues until Friday. New MPs then have the chance to go on various induction courses and are allocated offices.
+      My bet is that 21 June  will see the state opening, with the government's plans for the coming session announced.
+  11  Solomona scored 40 tries in the 2016 season, including a record total of 40 in Super League.
+      Tigers chairman Steve Gill said in October that the 23-year-old Samoan was not for sale and would be returning to the club on 7 November.
+      BBC Sport understands Solomona has held talks with rugby union side Sale.
+      The Premiership club declined to comment on the story.
+  12  As well as outlawing driving while under the influence of illegal drugs, new legislation will include some prescription medicines.
+      But prescribed doses do not exceed the limits for legal drugs, so most patients should still be safe to drive.
+      Those who are unsure are advised to seek the advice of a pharmacist.
+      The new law, to be introduced 2 March 2015 in England and Wales, aims to catch those who put the lives of others at risk while driving under the influence of drugs.
+      It sets very low levels for eight well known illegal drugs, including cannabis and cocaine, but also includes eight prescription drugs, where the levels have been set much higher.
+      Most of them, including Temazepan and Diazepam, are used for treating conditions such as anxiety.
+      But the list also includes methadone, a heroin substitute and pain medication, and morphine, a powerful opiate also used for pain relief.
+      Robert Goodwill MP, Road Safety Minister, says as long as they stay within prescribed levels, most people will still be able to get behind the wheel of a car.
+      "If you are taking your medicine as directed and your driving is not impaired, then you are not breaking the law and there is no need to worry," he said.
+      "We advise anyone who is unsure about the effects of their medication or how the new legislation may affect them, to seek the advice of their doctor or pharmacist.
+      "There will also be a medical defence if a driver has been taking medication as directed and is found to be over the limit but not impaired.
+      "Drivers who are taking prescribed medication at high doses [are advised] to carry evidence with them, such as prescriptions slips, when driving  in order to minimise any inconvenience should they be asked to take a test by the police."
+      Prof David Taylor, a spokesman for the Royal Pharmaceutical Society and a member of the Department for Transport advisory panel on drug-driving said "Don't stop taking your medicines, prescribed or otherwise, if you are worried about this new law.
+      "Instead, talk to your doctor or pharmacist for information about how your medicines might affect your ability to drive.
+      "They'll be happy to give you the advice you need to stay safe."
+      Ed Morrow, campaigns officer for road safety charity Brake said the organisation strongly welcomed the new drug-diving law.
+      "This much-needed progressive move by government will make it much easier for police to deal with illegal drug-drivers," he said.
+      "We are confident that the necessary measures are in place to ensure drivers who take prescription medication are not unfairly penalised.
+      "However, many prescription medications can have a negative effect on your ability to drive safely, and there is a worrying lack of awareness of this among the public."
+  13  He was a reserve player at Derby before his career was ended by injury.
+      Guthrie became the Rams' trainer and then kit manager, working with more than a dozen managers including Brian Clough over the course of six decades.
+      He was appointed an MBE in 2009 for services to football and has a stand named after him at the iPro Stadium.
+      Despite falling ill four years ago, he was still a regular on match days and usually sat in his familiar seat in the home dugout until very recently.
+      "It goes without saying everyone at Derby County is saddened to learn of the passing of Gordon," said Sam Rush, the club's president and chief executive.
+      "Our thoughts and condolences are with Gordon's family and friends at this time."
+      A minute's silence will be held in memory of Guthrie prior to Derby's EFL Cup third-round tie against Liverpool on Tuesday.
+      Former striker Andy Garner, who began his career at Derby and more recently was part of their coaching staff, said Guthrie was like a father figure to youngsters at the club.
+      "I found it quite daunting, being a young man and coming to Derby from a small village," Garner told BBC Radio Derby.
+      "Although I was a big, strong lad, I needed somebody like Gordie. I was lonely at times and he definitely helped me.
+      "It was a joy for me. I absolutely loved my two-year apprenticeship and Gordie was always there for us. The players and the staff all loved him being there."
+  14  The 19-year-old, from Staffordshire, died on Wednesday after a four-year battle with the disease.
+      Stephen's appeal in aid of the Teenage Cancer Trust on his Just Giving page has now raised £3.7m.
+      There are now plans to make a film about his life, using footage shot over the past 12 months.
+      Film-maker Grigorij Richters, 26, from Hamburg, Germany, met Stephen at the Champions League final at Wembley in May 2013 and they became friends.
+      The visit to Wembley was on the "bucket list" of 46 ambitions Stephen wanted to achieve before he died, along with raising money for the Teenage Cancer Trust.
+      The pair agreed to film the bucket list together and he now has hours of footage, which he wants to use to tell Stephen's story.
+      Mr Richters said Stephen was "a young man who did the inconceivable, the unbelievable, at a young age".
+      At his former school, Chase Terrace Technology College in Burntwood, people have queued to sign a book of condolence and leave flowers.
+      Tributes have also been written in chalk on pavements in Birmingham.
+      Suggestions on social media that there should be a permanent memorial in the city will go before the Broad Street Walk of Stars committee in the summer.
+      Mike Olley, the manager of Broad Street in Birmingham, where the stars are located said: "We are always happy to take suggestions for the Walk of Stars.
+      "Many people have nominated Stephen now and I am delighted to put this before the committee."
+  15  No batsman from Bapchild Cricket Club was able to get off the mark against Christ Church University in Canterbury.
+      "We couldn't believe it, all they needed to do was hit a wall to get one run," Christ Church player Mike Rose told the Crawley Observer.
+      Somerset club Langport set the record for the lowest score when they were dismissed for zero in 1913.
+      Wirral CC were bowled out for three in a Cheshire League Division Three fixture in 2014 - though they had 11 players and were 0-8 at one stage.
+      And Kent village team Saltwood CC scored 216 before bowling Martin Walters out for zero in 8.2 overs during a match in 1964.
+      In first-class cricket, the lowest score ever made is six - by "The B's" against England at the old Lord's ground in 1810 - while New Zealand's 26 against England in 1955 remains the lowest total scored in a Test match.
+Singularity> salloc: Job 4991828 has exceeded its time limit and its allocation has been revoked.
+
