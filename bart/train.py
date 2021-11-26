@@ -33,8 +33,11 @@ from transformers import (
     AutoTokenizer,
     Seq2SeqTrainingArguments,
     Seq2SeqTrainer,
+    AlbertForSequenceClassification,
     DataCollatorForSeq2Seq,
 )
+
+
 
 from tabulate import tabulate
 import nltk
@@ -71,6 +74,8 @@ model_name = "facebook/bart-base"
 
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer_entail = AutoTokenizer.from_pretrained('textattack/albert-base-v2-snli')
+model_entail = AlbertForSequenceClassification.from_pretrained('textattack/albert-base-v2-snli')
 
 # Set model parameters or use the default
 # print(model.config)
@@ -159,6 +164,14 @@ def postprocess_text(preds, labels):
 
     return preds, labels
 
+def inference_score(sent1, sent2):
+	softmax = torch.nn.Softmax()
+	inputs = tokenizer_entail(sent1, sent2, return_tensors="pt")
+	outputs = model_entail(**inputs)
+	logits = outputs.logits
+	return softmax(logits)[0][2].item()
+
+#print("contradiction score is", inference_score("I am doing well", "I am sick"))
 
 def compute_metrics(eval_preds):
     preds, labels = eval_preds
