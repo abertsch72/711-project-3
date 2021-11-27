@@ -164,14 +164,14 @@ def postprocess_text(preds, labels):
 
     return preds, labels
 
-def inference_score(sent1, sent2):
+def inference_score(sent_pairs):
 	softmax = torch.nn.Softmax()
-	inputs = tokenizer_entail(sent1, sent2, return_tensors="pt")
+	inputs = tokenizer_entail(sent_pairs, return_tensors="pt", padding=True)
 	outputs = model_entail(**inputs)
 	logits = outputs.logits
-	return softmax(logits)[0][2].item()
+	return softmax(logits)[:,2]
 
-#print("contradiction score is", inference_score("I am doing well", "I am sick"))
+#print("contradiction score is", inference_score([["I am doing well", "I am sick"]]))
 
 def compute_metrics(eval_preds):
     preds, labels = eval_preds
